@@ -2,12 +2,7 @@
   <div class="content">
     <div class="left-side" id="calendar">
       <b id="title-calendar">Content Calendar</b>
-      <full-calendar [options]="calendarOptions">
-        <ng-template #eventContent let-arg>
-          <b>{{arg.timeText}}</b>
-          <i>{{arg.event.title}}</i>
-        </ng-template>
-      </full-calendar>
+      <full-calendar [options]="calendarOptions"></full-calendar>
     </div>
   </div>
 </main>

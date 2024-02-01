@@ -1,0 +1,16 @@
+#title-calendar {
+    font-size: 30px;
+    font-family: "Calibri", sans-serif;
+  }
+
+#calendar{
+    font-size: 15px;
+    font-family: "Arial", sans-serif;
+  }
+
+.left-side {
+    width: 700px;
+    height: 700px;
+    margin-left: 30px;
+    display: block;
+  }

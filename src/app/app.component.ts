@@ -14,12 +14,12 @@ interface DateClickArg {
   view: any;
 }
 
-interface eventClickArg {
-  event: {
-    title: string;
-    date: Date;
-  };
-}
+// interface eventClickArg {
+//   event: {
+//     title: string;
+//     date: Date;
+//   };
+// }
 
 
 @Component({

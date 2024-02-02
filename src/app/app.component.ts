@@ -14,6 +14,13 @@ interface DateClickArg {
   view: any;
 }
 
+// interface EventClickArg {
+//   event: {
+//     title: string;
+//     date: Date;
+//   };
+// }
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -24,7 +31,8 @@ export class AppComponent implements OnInit {
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, interactionPlugin],
     initialView: 'dayGridMonth',
-    dateClick: this.handleDateClick.bind(this)
+    dateClick: this.handleDateClick.bind(this),
+    eventClick: this.handleEventClick.bind(this)
   };
 
   content: any[] = [];
@@ -79,5 +87,10 @@ export class AppComponent implements OnInit {
 
   updateCalendarEvents() {
     this.calendarOptions.events = this.content;
+  }
+
+  handleEventClick(arg: any){
+    const startTime = arg.event.start.toLocaleDateString() + '  ' + arg.event.start.getHours() + ':' + arg.event.start.getMinutes();
+    alert('Event Title: ' + arg.event.title + '\nEvent Date: ' + startTime);
   }
 }

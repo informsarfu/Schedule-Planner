@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
 
   content: any[] = [];
 
-  newEvent: { title: string, date: string } = { title: '', date: '' };
+  newEvent: { title: string, date: string, time: string } = { title: '', date: '', time: '' };
 
   constructor(private sharedService: SharedService) {}
 
@@ -47,8 +47,11 @@ export class AppComponent implements OnInit {
   handleDateClick(arg: DateClickArg) {
     const date = arg.dateStr;
     const title = prompt('Enter event details:');
+    const time = "ADD prompt to select time as well"
     if (title) {
-      this.sharedService.addEvents(title,date)
+      const time = prompt('Enter event time(HH:MM):');
+    if (time) {
+      this.sharedService.addEvents(title,date,time)
         .then(() => {
           console.log('Event added successfully');
           this.loadEvents();
@@ -58,14 +61,15 @@ export class AppComponent implements OnInit {
         });
     }
   }
+}
 
   addEvent() {
     if (this.newEvent.title && this.newEvent.date) {
-      this.sharedService.addEvents(this.newEvent.title, this.newEvent.date)
+      this.sharedService.addEvents(this.newEvent.title, this.newEvent.date,this.newEvent.time)
         .then(() => {
           console.log('Event added successfully');
           this.loadEvents();
-          this.newEvent = { title: '', date: '' };
+          this.newEvent = { title: '', date: '', time: '' };
         })
         .catch(error => {
           console.error('Error adding event:', error);

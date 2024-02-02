@@ -4,9 +4,10 @@
       <b id="title-calendar">Content Calendar</b>
       <full-calendar [options]="calendarOptions"></full-calendar>
       <div id="new-event">
-        <span>Add New Event: </span>
+        <span>New Event: </span>
         <input type="text" placeholder="Event Title" [(ngModel)]="newEvent.title" style="margin-right: 10px">
         <input type="date" [(ngModel)]="newEvent.date" style="margin-right: 10px">
+        <input id="eventTime" type="time" [(ngModel)]="newEvent.time" style="margin-right: 10px">
         <button (click)="addEvent()">Add Event</button>
       </div>
     </div>

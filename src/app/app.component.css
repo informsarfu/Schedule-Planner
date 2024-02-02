@@ -9,11 +9,10 @@
   }
 
 .left-side {
-    width: 600px;
-    height: 300px;
+    width: 55%;
+    height: 5%;
     margin-left: 30px;
     display:block;
-    float:left;
   }
 
 #new-event{

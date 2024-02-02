@@ -32,7 +32,8 @@ export class AppComponent implements OnInit {
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, interactionPlugin],
     initialView: 'dayGridMonth',
-    // dateClick: this.handleDateClick.bind(this),
+    fixedWeekCount: false,
+    dateClick: this.handleDateClick.bind(this),
     eventClick: this.handleEventClick.bind(this)
   };
 
@@ -53,29 +54,30 @@ export class AppComponent implements OnInit {
     });
   }
 
-  // handleDateClick(arg: DateClickArg) {
-  //   const title = prompt('Enter event title:');
-  //   const time = prompt('Enter event time (HH:MM format):');
+  //stop here
+
+  handleDateClick(arg: DateClickArg) {
+    const title = prompt('Enter event title:');
+    const time = prompt('Enter event time (HH:MM format):');
     
-  //   if (title && time) {
-  //     const dateTimeString = arg.dateStr + ' ' + time;
-  //     const eventDateTime = new Date(dateTimeString);
+    if (title && time) {
+      const dateTimeString = arg.dateStr + ' ' + time;
+      const eventDateTime = new Date(dateTimeString);
   
-  //     if (!isNaN(eventDateTime.getTime())) {
-  //       const eventTime = eventDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  //       this.sharedService.addEvents(title, eventDateTime.toISOString(), eventDateTime.toISOString())
-  //         .then(() => {
-  //           console.log('Event added successfully');
-  //           this.loadEvents();
-  //         })
-  //         .catch(error => {
-  //           console.error('Error adding event:', error);
-  //         });
-  //     } else {
-  //       alert('Invalid date-time format. Please enter the date and time in HH:MM format.');
-  //     }
-  //   }
-  // }
+      if (!isNaN(eventDateTime.getTime())) {
+        this.sharedService.addEvents(title, arg.dateStr, time)
+          .then(() => {
+            console.log('Event added successfully');
+            this.loadEvents();
+          })
+          .catch(error => {
+            console.error('Error adding event:', error);
+          });
+      } else {
+        alert('Invalid date-time format. Please enter the date and time in HH:MM format.');
+      }
+    }
+  }
   
 
   addEvent() {

@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, interactionPlugin],
     initialView: 'dayGridMonth',
-    // dateClick: this.handleDateClick.bind(this)
+    dateClick: this.handleDateClick.bind(this)
   };
 
   events: any[] = [];
@@ -44,20 +44,20 @@ export class AppComponent implements OnInit {
     });
   }
 
-  // handleDateClick(arg: DateClickArg) {
-  //   const dateStr = arg.dateStr;
-  //   const title = prompt('Enter a title for the event:');
-  //   if (title) {
-  //     this.sharedService.addEvents({ title, dateStr })
-  //       .then(() => {
-  //         console.log('Event added successfully');
-  //         this.loadEvents();
-  //       })
-  //       .catch(error => {
-  //         console.error('Error adding event:', error);
-  //       });
-  //   }
-  // }
+  handleDateClick(arg: DateClickArg) {
+    const date = arg.dateStr;
+    const title = prompt('Enter event details:');
+    if (title) {
+      this.sharedService.addEvents(title,date)
+        .then(() => {
+          console.log('Event added successfully');
+          this.loadEvents();
+        })
+        .catch(error => {
+          console.error('Error adding event:', error);
+        });
+    }
+  }
 
   addEvent() {
     if (this.newEvent.title && this.newEvent.date) {

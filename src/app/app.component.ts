@@ -14,12 +14,13 @@ interface DateClickArg {
   view: any;
 }
 
-// interface EventClickArg {
-//   event: {
-//     title: string;
-//     date: Date;
-//   };
-// }
+interface eventClickArg {
+  event: {
+    title: string;
+    date: Date;
+  };
+}
+
 
 @Component({
   selector: 'app-root',
@@ -31,13 +32,13 @@ export class AppComponent implements OnInit {
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, interactionPlugin],
     initialView: 'dayGridMonth',
-    dateClick: this.handleDateClick.bind(this),
+    // dateClick: this.handleDateClick.bind(this),
     eventClick: this.handleEventClick.bind(this)
   };
 
   content: any[] = [];
 
-  newEvent: { title: string, date: string, time: string } = { title: '', date: '', time: '' };
+  newEvent: { title: string, date: string, time: string} = { title: '', date: '', time: ''};
 
   constructor(private sharedService: SharedService) {}
 
@@ -52,32 +53,38 @@ export class AppComponent implements OnInit {
     });
   }
 
-  handleDateClick(arg: DateClickArg) {
-    const date = arg.dateStr;
-    const title = prompt('Enter event details:');
-    const time = "ADD prompt to select time as well"
-    if (title) {
-      const time = prompt('Enter event time(HH:MM):');
-    if (time) {
-      this.sharedService.addEvents(title,date,time)
-        .then(() => {
-          console.log('Event added successfully');
-          this.loadEvents();
-        })
-        .catch(error => {
-          console.error('Error adding event:', error);
-        });
-    }
-  }
-}
+  // handleDateClick(arg: DateClickArg) {
+  //   const title = prompt('Enter event title:');
+  //   const time = prompt('Enter event time (HH:MM format):');
+    
+  //   if (title && time) {
+  //     const dateTimeString = arg.dateStr + ' ' + time;
+  //     const eventDateTime = new Date(dateTimeString);
+  
+  //     if (!isNaN(eventDateTime.getTime())) {
+  //       const eventTime = eventDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  //       this.sharedService.addEvents(title, eventDateTime.toISOString(), eventDateTime.toISOString())
+  //         .then(() => {
+  //           console.log('Event added successfully');
+  //           this.loadEvents();
+  //         })
+  //         .catch(error => {
+  //           console.error('Error adding event:', error);
+  //         });
+  //     } else {
+  //       alert('Invalid date-time format. Please enter the date and time in HH:MM format.');
+  //     }
+  //   }
+  // }
+  
 
   addEvent() {
-    if (this.newEvent.title && this.newEvent.date) {
-      this.sharedService.addEvents(this.newEvent.title, this.newEvent.date,this.newEvent.time)
+    if (this.newEvent.title && this.newEvent.date && this.newEvent.time) {
+      this.sharedService.addEvents(this.newEvent.title, this.newEvent.date, this.newEvent.time)
         .then(() => {
           console.log('Event added successfully');
           this.loadEvents();
-          this.newEvent = { title: '', date: '', time: '' };
+          this.newEvent = { title: '', date: '', time: ''};
         })
         .catch(error => {
           console.error('Error adding event:', error);
@@ -89,8 +96,22 @@ export class AppComponent implements OnInit {
     this.calendarOptions.events = this.content;
   }
 
-  handleEventClick(arg: any){
-    const startTime = arg.event.start.toLocaleDateString() + '  ' + arg.event.start.getHours() + ':' + arg.event.start.getMinutes();
-    alert('Event Title: ' + arg.event.title + '\nEvent Date: ' + startTime);
+  handleEventClick(arg: any) {
+    console.log("Clicked Event:", arg);
+    const eventDate = arg.event.startStr;
+    const eventTitle = arg.event.title;
+    const eventTime = arg.event.extendedProps.time;
+    const [hours, minutes] = eventTime.split(':');
+
+    let formattedTime: string;
+    const hoursNumber = parseInt(hours, 10);
+
+    if (hoursNumber > 12) {
+      formattedTime = (hoursNumber - 12).toString() + ':' + minutes + ' PM';
+    } else {
+      formattedTime = hours + ':' + minutes + ' AM';
+    }
+  
+    alert('Event Title: ' + eventTitle + '\nEvent Time: ' + formattedTime);
   }
 }

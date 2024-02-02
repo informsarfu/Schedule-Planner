@@ -14,8 +14,8 @@ export class SharedService {
     return collectionData(events,{idField:'id'});
   }
 
-  addEvents(title: string, date: string, time: string ){
-    let new_event = { title: title, date: date, time: time };
+  addEvents(title: string, date: string, time:string){
+    let new_event = { title: title, date: date, time:time};
     let events = collection(this.fs,'content');
     console.log(new_event);
     return addDoc(events,new_event);

@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { DialogModule } from 'primeng/dialog';
 
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
@@ -31,6 +32,7 @@ const firebaseConfig = {
     CalendarModule,
     FormsModule,
     FullCalendarModule,
+    DialogModule,
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
     [TimepickerModule.forRoot()]

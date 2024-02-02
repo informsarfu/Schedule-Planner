@@ -2,7 +2,7 @@
   <div class="content">
     <div class="left-side" id="calendar">
       <b id="title-calendar">Content Calendar</b>
-      <full-calendar [options]="calendarOptions"></full-calendar>
+      <full-calendar [options]="calendarOptions" appendTo="body"></full-calendar>
       <div id="new-event">
         <span>New Event: </span>
         <input type="text" placeholder="Event Title" [(ngModel)]="newEvent.title" style="margin-right: 10px">

@@ -4,6 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { SharedService } from './shared.service';
 
+
 interface DateClickArg {
   date: Date;
   dateStr: string;
@@ -13,13 +14,6 @@ interface DateClickArg {
   jsEvent: MouseEvent;
   view: any;
 }
-
-// interface eventClickArg {
-//   event: {
-//     title: string;
-//     date: Date;
-//   };
-// }
 
 
 @Component({
@@ -53,8 +47,6 @@ export class AppComponent implements OnInit {
       this.updateCalendarEvents();
     });
   }
-
-  //stop here
 
   handleDateClick(arg: DateClickArg) {
     const title = prompt('Enter event title:');
@@ -95,25 +87,22 @@ export class AppComponent implements OnInit {
   }
 
   updateCalendarEvents() {
-    this.calendarOptions.events = this.content;
+    // this.calendarOptions.events = this.content;
+    this.calendarOptions.events = this.content.map(event => ({
+      title: event.title,
+      start: new Date(event.date + 'T' + event.time)
+    }));
   }
 
-  handleEventClick(arg: any) {
-    console.log("Clicked Event:", arg);
-    const eventDate = arg.event.startStr;
-    const eventTitle = arg.event.title;
-    const eventTime = arg.event.extendedProps.time;
-    const [hours, minutes] = eventTime.split(':');
+  handleEventClick(eventData: any) {
+    console.log("Clicked Event:", eventData);
+    const eventTitle = eventData.event.title;
+    const eventStart = new Date(eventData.event.start);
+    const eventTime = eventStart.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-    let formattedTime: string;
-    const hoursNumber = parseInt(hours, 10);
-
-    if (hoursNumber > 12) {
-      formattedTime = (hoursNumber - 12).toString() + ':' + minutes + ' PM';
-    } else {
-      formattedTime = hours + ':' + minutes + ' AM';
-    }
-  
-    alert('Event Title: ' + eventTitle + '\nEvent Time: ' + formattedTime);
+    console.log('Event Title:', eventTitle);
+    console.log('Event Date:', eventStart.toDateString());
+    console.log('Event Time:', eventTime);
+    alert('Event Title: ' + eventTitle + '\nEvent Date: ' + eventStart.toDateString() + '\nEvent Time: ' + eventTime);
   }
 }

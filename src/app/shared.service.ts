@@ -10,13 +10,14 @@ export class SharedService {
   constructor(private fs: Firestore) { }
 
   getEvents(){
-    let events = collection(this.fs,'events');
+    let events = collection(this.fs,'content');
     return collectionData(events,{idField:'id'});
   }
 
   addEvents(title: string, date: string ){
     let new_event = { title: title, date: date };
-    let events = collection(this.fs,'events');
+    let events = collection(this.fs,'content');
+    console.log(new_event);
     return addDoc(events,new_event);
   }
 }

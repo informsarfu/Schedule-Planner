@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     dateClick: this.handleDateClick.bind(this)
   };
 
-  events: any[] = [];
+  content: any[] = [];
 
   newEvent: { title: string, date: string } = { title: '', date: '' };
 
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
 
   loadEvents() {
     this.sharedService.getEvents().subscribe(events => {
-      this.events = events;
+      this.content = events;
       this.updateCalendarEvents();
     });
   }
@@ -74,6 +74,6 @@ export class AppComponent implements OnInit {
   }
 
   updateCalendarEvents() {
-    this.calendarOptions.events = this.events;
+    this.calendarOptions.events = this.content;
   }
 }

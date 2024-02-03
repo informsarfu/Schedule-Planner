@@ -33,6 +33,11 @@ The application will be served at http://localhost:4200/. Open this URL in your 
 - Click on an existing event to view its details.
 - Edit or delete events as needed.
 
+## Project Output
+
+<img width="765" alt="calendar 2" src="https://github.com/informsarfu/Content_Calendar/assets/78136256/1d1aab57-1967-4022-9c47-c29d414bd86d">
+
+
 ## Contact Information
 
 For any queries, please reach me at informsarfu@gmail.com or sshahna2@asu.edu

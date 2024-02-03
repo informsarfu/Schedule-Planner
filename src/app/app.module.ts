@@ -11,6 +11,11 @@ import { DialogModule } from 'primeng/dialog';
 
 import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { DialogBodyComponent } from './dialog-body/dialog-body.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyCkGKwnsdwliHWlZd1vnsOBY4xiyhkEB9s",
@@ -24,7 +29,8 @@ const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogBodyComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +39,9 @@ const firebaseConfig = {
     FormsModule,
     FullCalendarModule,
     DialogModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore()),
     [TimepickerModule.forRoot()]

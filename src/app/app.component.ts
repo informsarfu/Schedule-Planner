@@ -3,6 +3,8 @@ import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { SharedService } from './shared.service';
+import { DialogBodyComponent } from './dialog-body/dialog-body.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 
 interface DateClickArg {
@@ -35,7 +37,9 @@ export class AppComponent implements OnInit {
 
   newEvent: { title: string, date: string, time: string} = { title: '', date: '', time: ''};
 
-  constructor(private sharedService: SharedService) {}
+  constructor(
+    private sharedService: SharedService,
+    private matDialog: MatDialog) {}
 
   ngOnInit() {
     this.loadEvents();
@@ -100,9 +104,29 @@ export class AppComponent implements OnInit {
     const eventStart = new Date(eventData.event.start);
     const eventTime = eventStart.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
+    this.openEvent(eventTitle, eventStart, eventTime);
+
     console.log('Event Title:', eventTitle);
     console.log('Event Date:', eventStart.toDateString());
     console.log('Event Time:', eventTime);
-    alert('Event Title: ' + eventTitle + '\nEvent Date: ' + eventStart.toDateString() + '\nEvent Time: ' + eventTime);
+    // alert('Event Title: ' + eventTitle + '\nEvent Date: ' + eventStart.toDateString() + '\nEvent Time: ' + eventTime);
+  }
+
+  openEvent(eventTitle: string, eventStart: Date, eventTime: string){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '250px';
+    dialogConfig.data = {
+      title: eventTitle,
+      date: eventStart.toDateString(),
+      time: eventTime
+    };
+    dialogConfig.position = {
+      top: '0',
+      left: '60%'
+    };
+
+    dialogConfig.panelClass = 'event-dialog';
+  
+    this.matDialog.open(DialogBodyComponent, dialogConfig);
   }
 }

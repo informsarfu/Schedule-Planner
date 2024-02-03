@@ -6,13 +6,15 @@
 #calendar{
     font-size: 15px;
     font-family: "Arial", sans-serif;
+    position: relative;
   }
 
 .left-side {
     width: 55%;
     height: 5%;
     margin-left: 30px;
-    display:block;
+    display:inline-block;
+    float: left;
   }
 
 #new-event{

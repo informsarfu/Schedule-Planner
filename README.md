@@ -35,8 +35,11 @@ The application will be served at http://localhost:4200/. Open this URL in your 
 
 ## Project Output
 
+### WebPage
 <img width="765" alt="calendar 2" src="https://github.com/informsarfu/Content_Calendar/assets/78136256/1d1aab57-1967-4022-9c47-c29d414bd86d">
 
+### DataBase - Firebase
+<img width="928" alt="firebase-3" src="https://github.com/informsarfu/Content_Calendar/assets/78136256/e20088ab-8208-482f-a70e-e987ceb2fa10">
 
 ## Contact Information
 

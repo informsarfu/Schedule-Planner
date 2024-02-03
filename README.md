@@ -30,8 +30,8 @@ The application will be served at http://localhost:4200/. Open this URL in your 
 ## Usage
 
 - Click on a date on the calendar to add a new event.
+- The New Event Component below the calendar can also be used to add new events to the calendar.
 - Click on an existing event to view its details.
-- Edit or delete events as needed.
 
 ## Project Output
 

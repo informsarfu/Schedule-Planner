@@ -46,10 +46,18 @@ export class AppComponent implements OnInit {
   }
 
   loadEvents() {
-    this.sharedService.getEvents().subscribe(events => {
+    this.sharedService.getEvents().then((events: any[]) => {
       this.content = events;
       this.updateCalendarEvents();
     });
+  }
+
+  updateCalendarEvents() {
+    // this.calendarOptions.events = this.content;
+    this.calendarOptions.events = this.content.map(event => ({
+      title: event.title,
+      start: new Date(event.date + 'T' + event.time)
+    }));
   }
 
   handleDateClick(arg: DateClickArg) {
@@ -88,14 +96,6 @@ export class AppComponent implements OnInit {
           console.error('Error adding event:', error);
         });
     }
-  }
-
-  updateCalendarEvents() {
-    // this.calendarOptions.events = this.content;
-    this.calendarOptions.events = this.content.map(event => ({
-      title: event.title,
-      start: new Date(event.date + 'T' + event.time)
-    }));
   }
 
   handleEventClick(eventData: any) {

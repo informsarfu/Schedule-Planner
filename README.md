@@ -29,6 +29,10 @@ The application will be served at http://localhost:4200/. Open this URL in your 
 
 ## Usage
 
-    Click on a date on the calendar to add a new event.
-    Click on an existing event to view its details.
-    Edit or delete events as needed.
+- Click on a date on the calendar to add a new event.
+- Click on an existing event to view its details.
+- Edit or delete events as needed.
+
+## Contact Information
+
+For any queries, please reach me at informsarfu98@gmail.com or sshahna2@asu.edu

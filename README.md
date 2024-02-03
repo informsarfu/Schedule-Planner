@@ -1,27 +1,34 @@
-# Calendar
+# Content Calendar
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
+This is a simple Angular application for managing events. It allows users to add, view, and interact with events on a calendar.
 
-## Development server
+## Prerequisite
+Before running this application, make sure you have the following installed:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Node.js and npm (Node Package Manager) 
 
-## Code scaffolding
+Download and install Node.js from `nodejs.org`
+After installation, run `node -v` and `npm -v` in command prompt to verify correct installation.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Angular CLI (Command Line Interface)
 
-## Build
+Once npm is installed, you can install Angular CLI globally using npm. Open a terminal or command prompt and run `npm install -g @angular/cli`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To verify that Angular CLI is installed correctly, run `ng --version` or `ng v`
 
-## Running unit tests
+## Code Installation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Clone this repository to your local machine: `git clone <repository-url>`
+- Navigate to project directory and install dependencies using npm: `npm install`
 
-## Running end-to-end tests
+## Running Application
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+To run the application locally, use the Angular CLI: `ng serve`
 
-## Further help
+The application will be served at http://localhost:4200/. Open this URL in your web browser to view the app.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Usage
+
+    Click on a date on the calendar to add a new event.
+    Click on an existing event to view its details.
+    Edit or delete events as needed.

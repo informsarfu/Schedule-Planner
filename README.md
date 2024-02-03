@@ -35,4 +35,4 @@ The application will be served at http://localhost:4200/. Open this URL in your 
 
 ## Contact Information
 
-For any queries, please reach me at informsarfu98@gmail.com or sshahna2@asu.edu
+For any queries, please reach me at informsarfu@gmail.com or sshahna2@asu.edu

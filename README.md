@@ -1,4 +1,4 @@
-# Content Calendar
+# Week Planner - Content Calendar
 
 This is a simple Angular application for managing events. It allows users to add, view, and interact with events on a calendar.
 
